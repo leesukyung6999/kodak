@@ -1,0 +1,5 @@
+@charset "utf-8";
+
+@function calc-vw375($value) {
+    @return #{$value / (375 / 100)};
+}
