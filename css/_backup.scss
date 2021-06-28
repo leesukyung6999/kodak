@@ -18,7 +18,7 @@
 
     }
     .first_box{
-        position: relative;width: 50%;background: #faf2e7;
+        width: 50%;position: relative;
         > *{position: absolute;right: 20%;}
         .circle{
             top: 15%;width: 430px;height: 430px;border-radius: 50%;border: 20px solid #ddd;padding: 140px 24px 184px;font-size: 18px;text-align: right;
@@ -28,12 +28,12 @@
         .camera{top: 60%;width: 300px;height: 290px;}
     }
 }
-#cnt2, #cnt3, #cnt4, #cnt5{padding: calc-vw1920(100) calc-vw1920(190);}
 #cnt2{
-    overflow: hidden;
+    padding: calc-vw1920(100) 0 calc-vw1920(500);overflow: hidden;
     .sub_tit{
+        padding: 0 calc-vw1920(190);
         h2{height: 65px;}
-        p{line-height: 35px;}
+        p{padding-top: 30px;line-height: 35px;}
     }
     ul{
         @include flex;
@@ -63,7 +63,8 @@
     }
 }
 #cnt3{
-    background: url("../images/pc/cnt3_bg.jpg") no-repeat left top / cover;height: 100vh;
+    background: url("../images/pc/cnt3_bg.jpg") no-repeat left top / cover;height: 100vh;padding: calc-vw1920(100) calc-vw1920(190);
+    h2{padding-bottom: 30px;}
     p{padding: 10px 0;}
    .motion{
        @include flex;
@@ -86,9 +87,13 @@
        }
    }
 }
+#cnt4, #cnt5{
+    padding: 0 calc-vw1920(190);
+    h2{margin: 80px 0 30px;}
+}
 #cnt4{
     position: relative;height: 180vh;
-    h2{border: 20px solid $yellow;display: inline-block;padding: 30px 150px 80px 50px;}
+    h2{border: 20px solid $yellow;display: inline-block;padding: 50px 150px 80px 50px;}
     .pass_wrapper{
         @include translateY-50;
         position: absolute;left:20%;top:50%;width: 1300px;height: 869px;overflow:hidden;box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
@@ -121,15 +126,14 @@
     .txt_box{
         position: absolute;right: 10%;bottom: 50px;border: 20px solid $yellow;padding: 10px 50px;
         > *{padding: 15px 0;}
-        h3{font-size: 40px;padding-bottom: 30px;}
-        p{font-size: 18px;padding-bottom: 10px;}
+        h3{font-size: 30px;padding-bottom: 30px;}
     }
 }
 #cnt5{
     background: #faf2e7;height: 100vh;
     .event_pc{
         @include flex;
-        padding-top: 30px;
+        margin: 100px 0;
         li{
             margin-right: 15px;position: relative;
             .event_img{width: 160px;height: 467px;background: no-repeat;}
