@@ -42,7 +42,9 @@
             }
             .search_close{
                 position: absolute;right: 25px;top: 40px;width: 30px;height: 30px;
-                &::before, &::after{content:"";position: absolute;left: 0;top: 0;width: 100%;height: 2px;background: #222;}
+                &::before, &::after{
+                    content:"";position: absolute;left: 0;top: 50%;width: 100%;height: 2px;
+                }
                 &::before{@include transform(rotate(45deg));}
                 &::after{@include transform(rotate(-45deg));}
             }
@@ -51,22 +53,20 @@
 
 }
 #pcHeader{
-    @include translateX-50;
     @include transition(all 0.5s);
-    left: 50%;width: 90%;height: 90px;padding: 0 80px;
-    &.on{
-        @include transform(translate(0));
-        left: 0;width: 100%;
-    }
+    left: 5%;width: 90%;height: 90px;padding: 0 80px;
+    &.on{left: 0;width: 100%;}
     .logo{
         width: 134px;height: 90px;font-size: 20px;padding-left: 72px;
         background-image: url("../images/pc/logo_pc.png");
+        .logo_txt span{font-size: 18px;}
     }
     #pGnb{
         @include flex;
         @include align-items;
         @include transition(all 0.6s);
         &.active::before{content: "";position: absolute;left: 0;top: 89px;width: 100%;height: 60px;background: rgba(0,0,0,.9);}
+        z-index: 200;
         > ul {
             @include flex;
             > li {
@@ -87,10 +87,8 @@
         @include justify-content(space-between);
         width: 80px;
         .search_close{
-            right: 40px;top: 40px;width: 30px;height: 30px;
-            &::before, &::after{content:"";position: absolute;left: 0;top: 0;width: 100%;height: 2px;background: #fff;}
-            &::before{@include transform(rotate(45deg));}
-            &::after{@include transform(rotate(-45deg));}
+            right: 40px;top: 40px;
+            &::before, &::after{background: #fff;}
         }
     }
 
@@ -153,6 +151,7 @@
                         margin-right: 12px;border-color: #222;margin-top: 27px;
                     }
             }
+            .search_close::before, .search_close::after{background: #222;}
         }
     }
 }
@@ -174,6 +173,52 @@
         strong{font-size: 16px;display: block;margin-bottom: 10px;}
         .copy{padding-top: 10px;}
     }
+}
+
+// 작은 pc
+@media screen and (max-width: 1440px) {
+    body{overflow: hidden;}
+    .header{
+        .util{.shop{margin-right: 40px;}}
+    }
+    #pcHeader{
+        padding: 0 60px;
+        .logo{background-image: url("../images/tablet/logo_tablet.png");}
+        #pGnb{
+            > ul > li {
+                    position: relative;margin-right: 35px;height: 90px;line-height: 90px;
+                    > a{font-weight: 700;font-size: 16px;}
+                    &.on > a{color: $red;}
+                    ul{
+                        @include flex;
+                        position: absolute;top: 90px;left: 0;width: 400px;height: 60px;color: #fff;line-height: 60px;
+                        li{margin-right: 20px;}
+                    }
+                }
+            }
+        .util{
+            @include flex;
+            @include align-items;
+            @include justify-content(space-between);
+            width: 80px;
+            .search_close{
+                right: 40px;top: 40px;
+                &::before, &::after{background: #fff;}
+            }
+        }
+    
+    }
+    
+}
+
+// 태블릿
+@media screen and (max-width: 1194px) {
+
+}
+
+// 모바일
+@media screen and (max-width: 767px) {
+
 }
     // .header{
     //     .util{

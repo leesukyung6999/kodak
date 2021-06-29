@@ -71,18 +71,6 @@ address {
 .yellow {
   color: #FFB300; }
 
-.fz50 {
-  font-size: 50px;
-  font-weight: 700;
-  padding-bottom: 30px; }
-
-.fz25 {
-  font-size: 25px; }
-
-.fz18 {
-  font-size: 18px;
-  padding-bottom: 10px; }
-
 body {
   font-family: "roboto", "noto sans kr";
   font-size: 16px;

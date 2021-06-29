@@ -5,10 +5,20 @@ let active = false;
 
 // First we'll have to set up our event listeners
 // We want to watch for clicks on our scroller
+const pointer = document.querySelector('.point');
+
+if (document.querySelector('.scroller').style.left > '1047px') {
+  pointer.style.backgroundImage = 'url("../images/pc/point_left.png")';
+}
+else if (document.querySelector('.scroller').style.right > '253px') {
+  pointer.style.backgroundImage = 'url("../images/pc/point_right.png")';
+}
+
 document.querySelector('.scroller').addEventListener('mousedown',function(){
   active = true;
   // Add our scrolling class so the scroller has full opacity while active
   document.querySelector('.scroller').classList.add('scrolling');
+  pointer.style.display = 'none';
 });
 // We also want to watch the body for changes to the state,
 // like moving around and releasing the click
@@ -16,6 +26,8 @@ document.querySelector('.scroller').addEventListener('mousedown',function(){
 document.body.addEventListener('mouseup',function(){
   active = false;
   document.querySelector('.scroller').classList.remove('scrolling');
+  pointer.style.display = 'block';
+  ;
 });
 document.body.addEventListener('mouseleave',function(){
   active = false;

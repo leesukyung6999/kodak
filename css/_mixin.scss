@@ -54,3 +54,8 @@
     @-moz-keyframes #{$aniName} {@content;}
     @keyframes #{$aniName} {@content;}
 }
+@mixin animation($value){
+    -webkit-animation: $value;
+    -moz-animation: $value;
+    animation: $value;
+}

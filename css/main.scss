@@ -9,11 +9,12 @@
         position: relative;width: 50%;background: url("../images/pc/cnt1_bg.jpg") no-repeat left top / cover;
         .since_txt{
             color: #ddd;font-weight: 700;position: absolute;left: 100px;bottom: 330px;z-index: 5;
-            .since{display: block;}
+            .since{display: block;font-size: 50px;font-weight: 700;padding-bottom: 30px;}
             .year{font-size: 180px;line-height: 130px;}
         }
         .dark{
             position: absolute;bottom: 0;left: 0;width: 100%;height: 400px;background: rgba(0, 0, 0,.4);color: #fff;padding: 129px 143px 128px 116px;font-size: 18px;line-height: 35px;
+            .yellow{font-size: 25px;}
         }
 
     }
@@ -28,19 +29,27 @@
         .camera{top: 60%;width: 300px;height: 290px;}
     }
 }
-#cnt2, #cnt3, #cnt4, #cnt5{padding: calc-vw1920(100) calc-vw1920(190);}
+#cnt2, #cnt3, #cnt4, #cnt5{padding: calc-vw1920(100) calc-vw1920(200);}
 #cnt2{
     overflow: hidden;
     .sub_tit{
-        h2{height: 65px;}
-        p{line-height: 35px;}
+        h2{height: 65px;font-size: 50px;font-weight: 700;padding-bottom: 30px;}
+        p{line-height: 35px;font-size: 18px;padding-bottom: 10px;}
     }
     ul{
         @include flex;
         @include transform(rotate(-33deg));
         li{
             margin-right: 50px;
-            a img{box-shadow: -20px 40px 6px #ddd;border-radius: 30px;}
+            a img{
+                @include transition(all 0.5s);
+                @include transform(translate(0,0));
+                border-radius: 30px;box-shadow: none;
+            }
+        }
+        li.on a img{
+            @include transform(translateY(-20%));            
+            box-shadow: -20px 40px 6px #ddd;
         }
     }
     .up{
@@ -56,15 +65,22 @@
         li:nth-child(2){
             margin-top: 60px;
             img{
-            @include transform(rotate(-90deg));
-            height: 300px;border-radius: 40px;box-shadow: -40px -40px 6px #ddd;
+            @include transform(rotate(-90deg) translateX(0));
+            height: 300px;border-radius: 40px;box-shadow: none;
             }
+        }
+        li.on a img{
+            @include transform(rotate(-90deg) translateX(20%));
+            box-shadow: -40px -40px 6px #ddd;
         }
     }
 }
 #cnt3{
     background: url("../images/pc/cnt3_bg.jpg") no-repeat left top / cover;height: 100vh;
-    p{padding: 10px 0;}
+    .tit_txt{
+        h2{font-size: 50px;font-weight: 700;padding-bottom: 30px;}
+        p{padding: 10px 0;font-size: 18px;padding-bottom: 10px;}
+    }
    .motion{
        @include flex;
        @include align-items;
@@ -75,20 +91,41 @@
            .phone{height: 450px;}
            .bluetooth{height: 150px;margin: 160px 0;}
        }
-       .print{
-        position: relative;width: 420px;height: 260px;
-        .camera{position: absolute;z-index: 5;left: 0;top: 0;width: 400px;}
-        .img_m, .img_b{
-            @include translateY-50;
-            position: absolute;right: -10%;top: 50%;z-index: 3;
+       .vanish.on{
+           .phone{
+               @include keyframes(moveLitRight);
+               @include animation(moveLitRight 1s ease-in-out 1 forwards);
+            }
+            .bluetooth{
+                @include keyframes(blink);
+                @include animation(blink 0.5s ease-in-out infinite forwards);
+             }
         }
-        .img_b{opacity: 0;position: relative;z-index: 7;}
+       .print{
+           @include transition(all 0.5s);
+            position: relative;width: 420px;height: 260px;
+            .camera{position: absolute;z-index: 5;left: 0;top: 0;width: 400px;}
+            .img_m{
+                @include translateY-50;
+                position: absolute;right: 10%;top: 50%;z-index: 3;
+            }
        }
+       .print.outMini .img_m{right: -10%;}
+       .print.outMiniMove .img_m{right: 50%;}
    }
 }
+@keyframes moveLitRight {
+    0%{@include transform(rotate(0deg));}
+    50%{@include transform(rotate(15deg));}
+    100%{@include transform(rotate(0deg));}
+}
+@keyframes blink {
+    0%{opacity: 0.5;}
+    100%{opacity: 1;}
+}
 #cnt4{
-    position: relative;height: 180vh;
-    h2{border: 20px solid $yellow;display: inline-block;padding: 30px 150px 80px 50px;}
+    position: relative;height: 200vh;
+    h2{border: 20px solid $yellow;display: inline-block;padding: 60px 150px 80px 100px;font-size: 50px;font-weight: 700;padding-bottom: 30px;}
     .pass_wrapper{
         @include translateY-50;
         position: absolute;left:20%;top:50%;width: 1300px;height: 869px;overflow:hidden;box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
@@ -103,6 +140,12 @@
             &.scroller:hover{opacity:1;}
             .scroller__thumb{width:100%;height:100%;padding:5px;}
             &:before, &:after{content:" ";display: block;width: 7px;height: 9999px;position: absolute;left: 50%;margin-left: -3.5px;z-index: 30;transition:0.1s;}
+            .point{
+                @include translateY-50;
+                @include keyframes(moveLeft);
+                @include animation(moveLeft 1s ease-in-out infinite forwards);
+                position: absolute;left: 100px;top: 50%;width: 100px;height: 88px;background: url("../images/pc/point_right.png") no-repeat;
+            }
       }
       .scrolling{pointer-events:none;opacity:1;}// z-index: 1;
       .scroller:before{
@@ -118,44 +161,45 @@
         background: #fff;
       }
     }
-    .point_right{
-        @include translateY-50;
-        @include keyframes(moveLeft);
-        position: absolute;left: 200px;top: 50%;animation: moveLeft 0.3s forward;width: 60px;
-    }
     .txt_box{
-        position: absolute;right: 10%;bottom: 50px;border: 20px solid $yellow;padding: 10px 50px;
+        position: absolute;right: 10%;bottom: 50px;border: 20px solid $yellow;padding: 20px 50px;
         > *{padding: 15px 0;}
         h3{font-size: 40px;padding-bottom: 30px;}
         p{font-size: 18px;padding-bottom: 10px;}
     }
 }
 @keyframes moveLeft {
-    0%{left: 200px;}
-    100%{left: 250px;}
+    0%{left: 100px;}
+    100%{left: 150px;}
 }
 #cnt5{
     background: #faf2e7;height: 100vh;
+    h2{font-size: 50px;font-weight: 700;padding-bottom: 30px;}
+    p{font-size: 18px;padding-bottom: 10px;}
     .event_pc{
         @include flex;
         padding-top: 30px;
-        li{
+      li{
             margin-right: 15px;position: relative;
-            .event_img{width: 160px;height: 467px;background: no-repeat;}
+            .event_img{
+                @include transition(width 0.5s);
+                width: 160px;height: 467px;background: no-repeat;cursor: pointer;
+            }
         }
         li:nth-child(1) .event_img{background-image: url("../images/pc/event1.jpg");background-position: 50% 0;}
-        li:nth-child(2) .event_img{background-image: url("../images/pc/event2.jpg");background-position: 47% 0;width: 496px;}
+        li:nth-child(2) .event_img{background-image: url("../images/pc/event2.jpg");background-position: 47% 0;}
         li:nth-child(3) .event_img{background-image: url("../images/pc/event3.jpg");background-position: 56% 0;}
         li:nth-child(4) .event_img{background-image: url("../images/pc/event4.jpg");background-position: 17% 0;}
         li:nth-child(5) .event_img{background-image: url("../images/pc/event5.jpg");background-position: 7% 0;}
         li:nth-child(6) .event_img{background-image: url("../images/pc/event6.jpg");background-position: 79% 0;}
         .event_txt{
-            position: absolute;left: 0;bottom: -105px;background: #fff;width: 496px;height: 105px;padding: 10px 55px 25px 25px;display: none;
+            position: absolute;left: 0;bottom: -100px;background: #fff;width: 496px;height: 105px;padding: 10px 55px 25px 25px;visibility: hidden;
             h3{font-size: 30px;font-weight: 700;line-height: 47px;}
             p{font-size: 18px;line-height: 35px;}
             a{font-size: 20px;position: absolute;right: 45px;top: 35px;padding-right: 20px;background: url("../images/pc/btn_more.png") no-repeat 100% 55%;}
         }
-        li:nth-child(2) .event_txt{display: block;}
+        li.on .event_img{width: 496px;}
+        li.on .event_txt{visibility: visible;}
     }
 }
 

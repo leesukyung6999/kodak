@@ -104,10 +104,9 @@
         content: "";
         position: absolute;
         left: 0;
-        top: 0;
+        top: 50%;
         width: 100%;
-        height: 2px;
-        background: #222; }
+        height: 2px; }
       .header .util .search_wrap .search_close::before {
         -webkit-transform: rotate(45deg);
         -moz-transform: rotate(45deg);
@@ -122,23 +121,13 @@
         transform: rotate(-45deg); }
 
 #pcHeader {
-  -webkit-transform: translateX(-50%);
-  -moz-transform: translateX(-50%);
-  -ms-transform: translateX(-50%);
-  -o-transform: translateX(-50%);
-  transform: translateX(-50%);
   -webkit-transition: all 0.5s;
   transition: all 0.5s;
-  left: 50%;
+  left: 5%;
   width: 90%;
   height: 90px;
   padding: 0 80px; }
   #pcHeader.on {
-    -webkit-transform: translate(0);
-    -moz-transform: translate(0);
-    -ms-transform: translate(0);
-    -o-transform: translate(0);
-    transform: translate(0);
     left: 0;
     width: 100%; }
   #pcHeader .logo {
@@ -147,6 +136,8 @@
     font-size: 20px;
     padding-left: 72px;
     background-image: url("../images/pc/logo_pc.png"); }
+    #pcHeader .logo .logo_txt span {
+      font-size: 18px; }
   #pcHeader #pGnb {
     display: -webkit-box;
     display: -mox-box;
@@ -156,7 +147,8 @@
     -webkit-align-items: center;
     align-items: center;
     -webkit-transition: all 0.6s;
-    transition: all 0.6s; }
+    transition: all 0.6s;
+    z-index: 200; }
     #pcHeader #pGnb.active::before {
       content: "";
       position: absolute;
@@ -209,29 +201,9 @@
     width: 80px; }
     #pcHeader .util .search_close {
       right: 40px;
-      top: 40px;
-      width: 30px;
-      height: 30px; }
+      top: 40px; }
       #pcHeader .util .search_close::before, #pcHeader .util .search_close::after {
-        content: "";
-        position: absolute;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 2px;
         background: #fff; }
-      #pcHeader .util .search_close::before {
-        -webkit-transform: rotate(45deg);
-        -moz-transform: rotate(45deg);
-        -ms-transform: rotate(45deg);
-        -o-transform: rotate(45deg);
-        transform: rotate(45deg); }
-      #pcHeader .util .search_close::after {
-        -webkit-transform: rotate(-45deg);
-        -moz-transform: rotate(-45deg);
-        -ms-transform: rotate(-45deg);
-        -o-transform: rotate(-45deg);
-        transform: rotate(-45deg); }
 
 #mHeader {
   left: 0;
@@ -355,6 +327,8 @@
         margin-right: 12px;
         border-color: #222;
         margin-top: 27px; }
+    #mHeader .util .search_wrap .search_close::before, #mHeader .util .search_wrap .search_close::after {
+      background: #222; }
 
 #footer {
   position: relative;
@@ -408,5 +382,58 @@
       margin-bottom: 10px; }
     #footer > div .copy {
       padding-top: 10px; }
+
+@media screen and (max-width: 1440px) {
+  body {
+    overflow: hidden; }
+
+  .header .util .shop {
+    margin-right: 40px; }
+
+  #pcHeader {
+    padding: 0 60px; }
+    #pcHeader .logo {
+      background-image: url("../images/tablet/logo_tablet.png"); }
+    #pcHeader #pGnb > ul > li {
+      position: relative;
+      margin-right: 35px;
+      height: 90px;
+      line-height: 90px; }
+      #pcHeader #pGnb > ul > li > a {
+        font-weight: 700;
+        font-size: 16px; }
+      #pcHeader #pGnb > ul > li.on > a {
+        color: #E32425; }
+      #pcHeader #pGnb > ul > li ul {
+        display: -webkit-box;
+        display: -mox-box;
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+        position: absolute;
+        top: 90px;
+        left: 0;
+        width: 400px;
+        height: 60px;
+        color: #fff;
+        line-height: 60px; }
+        #pcHeader #pGnb > ul > li ul li {
+          margin-right: 20px; }
+    #pcHeader .util {
+      display: -webkit-box;
+      display: -mox-box;
+      display: -ms-flexbox;
+      display: -webkit-flex;
+      display: flex;
+      -webkit-align-items: center;
+      align-items: center;
+      -webkit-justify-content: space-between;
+      justify-content: space-between;
+      width: 80px; }
+      #pcHeader .util .search_close {
+        right: 40px;
+        top: 40px; }
+        #pcHeader .util .search_close::before, #pcHeader .util .search_close::after {
+          background: #fff; } }
 
 /*# sourceMappingURL=layout.css.map */
