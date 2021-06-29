@@ -49,3 +49,8 @@
     -webkit-align-items: $value;
     align-items: $value;
 }
+@mixin keyframes($aniName) {
+    @-webkit-keyframes #{$aniName} {@content;}
+    @-moz-keyframes #{$aniName} {@content;}
+    @keyframes #{$aniName} {@content;}
+}

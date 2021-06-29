@@ -1,4 +1,5 @@
-// I hope this over-commenting helps. Let's do this!
+window.addEventListener('load', function() {
+  // I hope this over-commenting helps. Let's do this!
 // Let's use the 'active' variable to let us know when we're using it
 let active = false;
 
@@ -56,4 +57,5 @@ document.body.addEventListener('touchend',function(){
 document.body.addEventListener('touchcancel',function(){
   active = false;
   document.querySelector('.scroller').classList.remove('scrolling');
+});
 });

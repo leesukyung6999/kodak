@@ -21,7 +21,7 @@
         position: relative;width: 50%;background: #faf2e7;
         > *{position: absolute;right: 20%;}
         .circle{
-            top: 15%;width: 430px;height: 430px;border-radius: 50%;border: 20px solid #ddd;padding: 140px 24px 184px;font-size: 18px;text-align: right;
+            top: 15%;width: 430px;height: 430px;border-radius: 50%;border: 20px solid rgba(233, 233, 233,.7);padding: 140px 24px 184px;font-size: 18px;text-align: right;
             .red{font-size: 40px;font-weight: 700;}
         }
         .filmcase{top: 45%;width: 500px;height: 260px;}
@@ -118,12 +118,21 @@
         background: #fff;
       }
     }
+    .point_right{
+        @include translateY-50;
+        @include keyframes(moveLeft);
+        position: absolute;left: 200px;top: 50%;animation: moveLeft 0.3s forward;width: 60px;
+    }
     .txt_box{
         position: absolute;right: 10%;bottom: 50px;border: 20px solid $yellow;padding: 10px 50px;
         > *{padding: 15px 0;}
         h3{font-size: 40px;padding-bottom: 30px;}
         p{font-size: 18px;padding-bottom: 10px;}
     }
+}
+@keyframes moveLeft {
+    0%{left: 200px;}
+    100%{left: 250px;}
 }
 #cnt5{
     background: #faf2e7;height: 100vh;

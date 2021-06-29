@@ -44,7 +44,7 @@
       width: 430px;
       height: 430px;
       border-radius: 50%;
-      border: 20px solid #ddd;
+      border: 20px solid rgba(233, 233, 233, 0.7);
       padding: 140px 24px 184px;
       font-size: 18px;
       text-align: right; }
@@ -232,6 +232,19 @@
     #cnt4 .pass_wrapper .scroller:before,
     #cnt4 .pass_wrapper .scroller:after {
       background: #fff; }
+  #cnt4 .point_right {
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    transform: translateY(-50%);
+    position: absolute;
+    left: 200px;
+    top: 50%;
+    animation: moveLeft 0.3s forward;
+    width: 60px; }
+@-webkit-keyframes moveLeft {}
+@-moz-keyframes moveLeft {}
   #cnt4 .txt_box {
     position: absolute;
     right: 10%;
@@ -247,6 +260,11 @@
       font-size: 18px;
       padding-bottom: 10px; }
 
+@keyframes moveLeft {
+  0% {
+    left: 200px; }
+  100% {
+    left: 250px; } }
 #cnt5 {
   background: #faf2e7;
   height: 100vh; }
