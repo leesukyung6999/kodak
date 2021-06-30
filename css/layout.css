@@ -1,3 +1,6 @@
+body {
+  overflow-x: hidden; }
+
 .header {
   display: -webkit-box;
   display: -mox-box;
@@ -18,8 +21,6 @@
     display: -ms-flexbox;
     display: -webkit-flex;
     display: flex;
-    -webkit-align-items: center;
-    align-items: center;
     -webkit-transform: translateX(-50%);
     -moz-transform: translateX(-50%);
     -ms-transform: translateX(-50%);
@@ -27,8 +28,18 @@
     transform: translateX(-50%);
     position: absolute;
     left: 50%;
-    top: 0;
-    background: no-repeat left 50%; }
+    top: 0; }
+    .header .logo a {
+      width: 160px;
+      height: 90px;
+      font-size: 20px;
+      padding-left: 72px;
+      background: no-repeat left 50%; }
+      .header .logo a .logo_txt {
+        padding: 17px 0;
+        display: block; }
+        .header .logo a .logo_txt span {
+          font-size: 18px; }
   .header .util .shop {
     margin-right: 50px; }
   .header .util .search_wrap {
@@ -130,14 +141,8 @@
   #pcHeader.on {
     left: 0;
     width: 100%; }
-  #pcHeader .logo {
-    width: 134px;
-    height: 90px;
-    font-size: 20px;
-    padding-left: 72px;
+  #pcHeader .logo a {
     background-image: url("../images/pc/logo_pc.png"); }
-    #pcHeader .logo .logo_txt span {
-      font-size: 18px; }
   #pcHeader #pGnb {
     display: -webkit-box;
     display: -mox-box;
@@ -206,129 +211,9 @@
         background: #fff; }
 
 #mHeader {
-  left: 0;
-  width: 100vw;
-  height: 80px;
-  padding: 0 20px;
-  visibility: hidden; }
-  #mHeader .gnb_open_btn {
-    position: relative;
-    width: 24px;
-    height: 16px;
-    z-index: 100; }
-    #mHeader .gnb_open_btn .line {
-      -webkit-transition: all 0.5s;
-      transition: all 0.5s;
-      position: absolute;
-      left: 0;
-      width: 100%;
-      height: 2px;
-      background: #000; }
-    #mHeader .gnb_open_btn .line1 {
-      top: 0; }
-    #mHeader .gnb_open_btn .line2 {
-      top: 9px; }
-    #mHeader .gnb_open_btn .line3 {
-      top: 18px; }
-  #mHeader .gnb_open_btn.active .line1 {
-    -webkit-transform: rotate(45deg);
-    -moz-transform: rotate(45deg);
-    -ms-transform: rotate(45deg);
-    -o-transform: rotate(45deg);
-    transform: rotate(45deg);
-    top: 9px; }
-  #mHeader .gnb_open_btn.active .line2 {
-    opacity: 0; }
-  #mHeader .gnb_open_btn.active .line3 {
-    -webkit-transform: rotate(-45deg);
-    -moz-transform: rotate(-45deg);
-    -ms-transform: rotate(-45deg);
-    -o-transform: rotate(-45deg);
-    transform: rotate(-45deg);
-    top: 9px; }
-  #mHeader #mGnb {
-    position: fixed;
-    left: -100%;
-    top: 0;
-    width: 100vw;
-    height: 100vh;
-    background: #FFB300; }
-    #mHeader #mGnb > ul {
-      padding: 100px 65px; }
-      #mHeader #mGnb > ul > li {
-        margin-bottom: 40px; }
-        #mHeader #mGnb > ul > li > a {
-          position: relative;
-          font-size: 30px;
-          line-height: 35px;
-          font-weight: 700;
-          display: block; }
-          #mHeader #mGnb > ul > li > a::before, #mHeader #mGnb > ul > li > a::after {
-            content: "";
-            position: absolute;
-            right: 0;
-            top: 40%;
-            width: 20px;
-            height: 3px;
-            background: #222; }
-          #mHeader #mGnb > ul > li > a::after {
-            -webkit-transform: rotate(90deg);
-            -moz-transform: rotate(90deg);
-            -ms-transform: rotate(90deg);
-            -o-transform: rotate(90deg);
-            transform: rotate(90deg); }
-        #mHeader #mGnb > ul > li ul {
-          visibility: hidden;
-          max-height: 0;
-          overflow: hidden; }
-          #mHeader #mGnb > ul > li ul li {
-            padding: 10px 20px; }
-  #mHeader .util .search_wrap {
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100vh;
-    background: #FFB300;
-    color: #222;
-    visibility: hidden; }
-    #mHeader .util .search_wrap .top {
-      padding: 100px 0; }
-      #mHeader .util .search_wrap .top::after {
-        background-color: #222;
-        top: 150px; }
-      #mHeader .util .search_wrap .top input {
-        /* Edge */
-        /* Internet   Explorer 10-11 */ }
-        #mHeader .util .search_wrap .top input::-webkit-input-placeholder {
-          color: #222;
-          font-size: 20px;
-          line-height: 20px; }
-        #mHeader .util .search_wrap .top input:-ms-input-placeholder {
-          color: #222;
-          font-size: 20px;
-          line-height: 20px; }
-        #mHeader .util .search_wrap .top input::placeholder {
-          color: #222;
-          font-size: 20px;
-          line-height: 20px; }
-      #mHeader .util .search_wrap .top button {
-        width: 30px;
-        height: 40px;
-        line-height: 40px;
-        margin-left: 60px; }
-    #mHeader .util .search_wrap .bottom {
-      -webkit-flex-wrap: wrap;
-      flex-wrap: wrap;
-      -webkit-justify-content: flex-start;
-      justify-content: flex-start;
-      padding: 0 50px; }
-      #mHeader .util .search_wrap .bottom li {
-        margin-right: 12px;
-        border-color: #222;
-        margin-top: 27px; }
-    #mHeader .util .search_wrap .search_close::before, #mHeader .util .search_wrap .search_close::after {
-      background: #222; }
+  visibility: hidden;
+  overflow: hidden;
+  height: 0; }
 
 #footer {
   position: relative;
@@ -384,56 +269,186 @@
       padding-top: 10px; }
 
 @media screen and (max-width: 1440px) {
-  body {
-    overflow: hidden; }
-
   .header .util .shop {
     margin-right: 40px; }
 
   #pcHeader {
     padding: 0 60px; }
-    #pcHeader .logo {
+    #pcHeader .logo a {
       background-image: url("../images/tablet/logo_tablet.png"); }
     #pcHeader #pGnb > ul > li {
-      position: relative;
       margin-right: 35px;
-      height: 90px;
-      line-height: 90px; }
+      height: 80px;
+      line-height: 80px; }
       #pcHeader #pGnb > ul > li > a {
-        font-weight: 700;
         font-size: 16px; }
-      #pcHeader #pGnb > ul > li.on > a {
-        color: #E32425; }
       #pcHeader #pGnb > ul > li ul {
-        display: -webkit-box;
-        display: -mox-box;
-        display: -ms-flexbox;
-        display: -webkit-flex;
-        display: flex;
+        top: 80px; }
+    #pcHeader .util .search_close {
+      right: 50px; } }
+@media screen and (max-width: 1194px) {
+  #pcHeader .logo a {
+    background-image: url("../images/tablet/logo_tablet.png"); } }
+@media screen and (max-width: 767px) {
+  #pcHeader {
+    display: none; }
+
+  .header .logo a {
+    width: 60px;
+    height: 80px; }
+
+  #mHeader {
+    left: 0;
+    width: 100%;
+    height: 80px;
+    padding: 0 20px;
+    visibility: visible;
+    overflow: visible; }
+    #mHeader .logo a {
+      background-image: url("../images/pc/logo_pc.png"); }
+    #mHeader .gnb_open_btn {
+      position: relative;
+      width: 24px;
+      height: 16px;
+      z-index: 100; }
+      #mHeader .gnb_open_btn .line {
+        -webkit-transition: all 0.5s;
+        transition: all 0.5s;
         position: absolute;
-        top: 90px;
         left: 0;
-        width: 400px;
-        height: 60px;
-        color: #fff;
-        line-height: 60px; }
-        #pcHeader #pGnb > ul > li ul li {
-          margin-right: 20px; }
-    #pcHeader .util {
-      display: -webkit-box;
-      display: -mox-box;
-      display: -ms-flexbox;
-      display: -webkit-flex;
-      display: flex;
-      -webkit-align-items: center;
-      align-items: center;
-      -webkit-justify-content: space-between;
-      justify-content: space-between;
-      width: 80px; }
-      #pcHeader .util .search_close {
-        right: 40px;
-        top: 40px; }
-        #pcHeader .util .search_close::before, #pcHeader .util .search_close::after {
-          background: #fff; } }
+        width: 100%;
+        height: 2px;
+        background: #000; }
+      #mHeader .gnb_open_btn .line1 {
+        top: 0; }
+      #mHeader .gnb_open_btn .line2 {
+        top: 9px; }
+      #mHeader .gnb_open_btn .line3 {
+        top: 18px; }
+    #mHeader .gnb_open_btn.active .line1 {
+      -webkit-transform: rotate(45deg);
+      -moz-transform: rotate(45deg);
+      -ms-transform: rotate(45deg);
+      -o-transform: rotate(45deg);
+      transform: rotate(45deg);
+      top: 9px; }
+    #mHeader .gnb_open_btn.active .line2 {
+      opacity: 0; }
+    #mHeader .gnb_open_btn.active .line3 {
+      -webkit-transform: rotate(-45deg);
+      -moz-transform: rotate(-45deg);
+      -ms-transform: rotate(-45deg);
+      -o-transform: rotate(-45deg);
+      transform: rotate(-45deg);
+      top: 9px; }
+    #mHeader #mGnb {
+      position: fixed;
+      left: -100%;
+      top: 0;
+      width: 100vw;
+      height: 100vh;
+      background: #FFB300; }
+      #mHeader #mGnb > ul {
+        padding: 150px 65px; }
+        #mHeader #mGnb > ul > li {
+          margin-bottom: 35px; }
+          #mHeader #mGnb > ul > li > a {
+            position: relative;
+            font-size: 30px;
+            line-height: 35px;
+            font-weight: 700;
+            display: block;
+            padding: 15px 40px 15px 0; }
+            #mHeader #mGnb > ul > li > a::before, #mHeader #mGnb > ul > li > a::after {
+              content: "";
+              position: absolute;
+              right: 5px;
+              top: 40%;
+              width: 20px;
+              height: 3px;
+              background: #222; }
+            #mHeader #mGnb > ul > li > a::after {
+              -webkit-transform: rotate(90deg);
+              -moz-transform: rotate(90deg);
+              -ms-transform: rotate(90deg);
+              -o-transform: rotate(90deg);
+              transform: rotate(90deg); }
+          #mHeader #mGnb > ul > li.on > a::after {
+            -webkit-transform: rotate(0deg);
+            -moz-transform: rotate(0deg);
+            -ms-transform: rotate(0deg);
+            -o-transform: rotate(0deg);
+            transform: rotate(0deg); }
+          #mHeader #mGnb > ul > li ul {
+            visibility: hidden;
+            max-height: 0;
+            overflow: hidden;
+            color: #fff;
+            background: #222; }
+            #mHeader #mGnb > ul > li ul li {
+              padding: 20px 40px; }
+    #mHeader .util #dim {
+      position: fixed;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5); }
+    #mHeader .util .search_wrap {
+      position: absolute;
+      left: 100%;
+      top: 0;
+      width: 100%;
+      height: 50vh;
+      background: #FFB300;
+      color: #222; }
+      #mHeader .util .search_wrap .top {
+        padding: 100px 0; }
+        #mHeader .util .search_wrap .top::after {
+          background-color: #222;
+          top: 150px;
+          height: 2px; }
+        #mHeader .util .search_wrap .top input {
+          /* Edge */
+          /* Internet   Explorer 10-11 */ }
+          #mHeader .util .search_wrap .top input::-webkit-input-placeholder {
+            color: #222;
+            font-size: 25px;
+            line-height: 25px;
+            font-weight: 700; }
+          #mHeader .util .search_wrap .top input:-ms-input-placeholder {
+            color: #222;
+            font-size: 25px;
+            line-height: 25px;
+            font-weight: 700; }
+          #mHeader .util .search_wrap .top input::placeholder {
+            color: #222;
+            font-size: 25px;
+            line-height: 25px;
+            font-weight: 700; }
+        #mHeader .util .search_wrap .top button {
+          width: 30px;
+          height: 40px;
+          line-height: 40px;
+          margin-left: 60px; }
+      #mHeader .util .search_wrap .bottom {
+        -webkit-flex-wrap: wrap;
+        flex-wrap: wrap;
+        -webkit-justify-content: center;
+        justify-content: center;
+        padding: 0 150px; }
+        #mHeader .util .search_wrap .bottom li {
+          margin-right: 20px;
+          border-color: #222;
+          margin-top: 27px;
+          border-width: 2px; }
+          #mHeader .util .search_wrap .bottom li a {
+            padding: 7px 13px;
+            font-weight: 700;
+            font-size: 20px; }
+      #mHeader .util .search_wrap .search_close {
+        top: 25px; }
+      #mHeader .util .search_wrap .search_close::before, #mHeader .util .search_wrap .search_close::after {
+        background: #222; } }
 
 /*# sourceMappingURL=layout.css.map */

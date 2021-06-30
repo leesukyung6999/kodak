@@ -25,7 +25,37 @@ $(document).ready(function(){
         });
     });
     //mobile 네비게이션
+    const $mGnb = $('#mGnb');
+    const $mGnbOpen = $('#mHeader .gnb_open_btn');
 
+    $mGnbOpen.on('click', function () {
+        if ($(this).hasClass('active')) {
+            $(this).removeClass('active');
+            $mGnb.stop().animate({left: '-100%'});
+        }
+        else {
+            $mGnb.stop().animate({left: 0});
+            $(this).addClass('active');
+            }
+    });
+    $mGnb.find('> ul > li').on('click', function () {
+        const $dep2LiHei = $(this).children('ul').find('li').outerHeight(true);
+        const $dep3Licount = $(this).children('ul').find('li').length;
+        //console.log($dep2LiHei * $dep3Licount);
+        
+        if ($(this).hasClass('on')) {
+            $(this).removeClass('on').children('ul').animate({maxHeight: 0}, function(){
+                $(this).css('visibility','hidden');
+            });
+        }
+        else {
+            $(this).siblings().removeClass('on').children('ul').animate({maxHeight: 0}, function(){
+                $(this).css('visibility','hidden');
+            });
+            $(this).addClass('on').children('ul').css('visibility','visible').animate({maxHeight: $dep2LiHei * $dep3Licount});
+        }
+        return false;
+    });
 
     // pc 검색
     const $pcSearchWrap = $('#pcHeader .util .search_wrap');
@@ -47,6 +77,23 @@ $(document).ready(function(){
     })
 
     // mobile 검색
+    const $mSearchWrap = $('#mHeader .util .search_wrap');
+    
+    $('#mHeader .util .search_open').on('click', function() {
+/*         const bodyHei = $('body').outerHeight();
+        $('html').css({height: bodyHei, overflow: 'hidden'});
 
+        $(this).append('<div id="dim"></dim>');
+ */        $mSearchWrap.stop().animate({left: 0});
+    });
+
+    $mSearchWrap.find('search_close').on('click',function(){
+        $(this).preventDefault();
+        $mSearchWrap.stop().fadeOut(function() {
+/*             $('html').removeAttr();
+            $('#dim').remove();
+ */
+        });
+    });
     
 });

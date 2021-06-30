@@ -1,6 +1,6 @@
 $(document).ready(function() {
 
-    $(window).on('scroll', function () {
+     $(window).on('scroll', function () {
         // 1) cnt2 카메라 움직임
         const moveStart = $('#cnt2').offset().top;
         const moveScale = moveStart * 0.4;
@@ -38,12 +38,29 @@ $(document).ready(function() {
         else {
             $vanish.removeClass('on').show().next().removeClass('outMini');
             }
+            // 3-1) cnt4 scroller 누르고 있을땐 point_right 사라지게 ok but 왼쪽방향으로 움직일때 제어하기!!!!!!!!!!!!!
+        
+            // 3-2) 4pass 사진들 delay되면서 나오기
+            const $cnt4 = $('#cnt4').offset().top;
+            const $cnt5 = $('#cnt5').offset().top;
+            const $passDelay = $('#cnt4 #pass_delaySlide .pass');
+            if ($(this).scrollTop() > $cnt4 - 400 && $(this).scrollTop() < $cnt5 ) {
+                 $passDelay.each(function(i) {
+                     let leftmove = 100 * i + 100;
+                    $(this).delay(100 * i).stop().animate({left: `${leftmove}px`});
+                });
+            }
+            else {
+                $passDelay.each(function(i) {
+                    let leftmove = 100 * i + 100;
+                   $(this).delay(100 * i).stop().animate({left: `-${leftmove}px`});
+               });
+          }
     });
 
     
 
 
-    // 3) cnt4 scroller 누르고 있을땐 point_right 사라지게 ok but 왼쪽방향으로 움직일때 제어하기!!!!!!!!!!!!!
 
 
     // 4-1) cnt5 이벤트 페이지 - pc 버전

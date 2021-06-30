@@ -86,7 +86,7 @@
     </header>
     <header id="mHeader" class="header">
         <h1 class="logo">
-            <a href="index.html"><img src="images/mobile/logo_m.png" alt="코닥 폴라로이드"></a>        
+            <a href="index.html"><span class="blind">코닥 폴라로이드</span></a>        
         </h1>
         <button type="button" class="gnb_open_btn">
             <span class="blind">주메뉴 열기</span>
@@ -141,7 +141,7 @@
                         <li><a href="">#포토북</a></li>
                         <li><a href="">#카트리지</a></li>
                 </ul>
-                <a role="button" class="search_close" href="" ></a>
+                <a role="button" class="search_close" href=""></a>
             </div>
         </div>
     </header>
@@ -154,7 +154,7 @@
             </div>
             <div class="dark">
                 <p><span class="yellow"><span class="dp_change">“당신이 버튼을 누르면</span> 나머지는 우리가 한다”</span>라는 슬로건으로</p>
-                <p><span class="dp_change">George Eastman은</span> 최초의 간단한 카메라를 손에 쥐었습니다.</p>
+                <p><span class="di_change">George Eastman은</span> 최초의 간단한 카메라를 손에 쥐었습니다.</p>
                 <p class="not_in_mobile">그는 1888 년부터 소비자에게 번거롭고 복잡한 사진 찍는 과정을<br>
                 모든 사람이 사용하기 쉽게 만들어냈습니다.</p>
             </div>
@@ -211,6 +211,7 @@
     </section>
     <section id="cnt4">
         <h2>Kodak의 <br><span class="yellow">4PASS</span> <br>필름인화기술</h2>
+        <span class="blind">4pass방식으로 사진이 출력됐을때 볼 수 있는 yellow margenta cyan 색상의 사진이 순차적으로 보여지고 그후 최종적으로 출력되는 이미지만 보여진다</span>
         <div class="pass_wrapper">
             <div class="before">
                 <img class="content-image" src="images/pc/cnt4_4pass.jpg" draggable="false"/>
@@ -224,6 +225,12 @@
                     <span class="blind">마우스를 누른채로 오른쪽으로 밀어보세요</span>
                 </div>
             </div>
+        </div>
+        <div id="pass_delaySlide">
+            <img src="images/mobile/pass_1.jpg" alt="" class="pass">
+            <img src="images/mobile/pass_2.jpg" alt="" class="pass">
+            <img src="images/mobile/pass_3.jpg" alt="" class="pass">
+            <img src="images/mobile/pass_4.jpg" alt="" class="top_img">
         </div>
         <div class="txt_box">
             <h3><span class="dp_change">모든 순간을 레트로한</span> 감성으로 인화하세요.</h3>
@@ -274,7 +281,7 @@
             <li>
                 <div class="event_img"></div>
                 <div class="event_txt">
-                    <h3 class="event_tit">코닥 레트로 매트 증정</h3>
+                    <h3 class="event_tit">코닥 레트로 매트</h3>
                     <p>이벤트 기간 : 20.9.3(목) ~ 9.18(금)</p>
                     <a href="">자세히 보기</a>
                 </div>
@@ -288,6 +295,56 @@
                 </div>
             </li>
         </ul>
+        <div id="acdn">
+            <h3><button type="button" id="acdnHeader1" class="acdnHeader" aria-controls="acdnPanel1"><span class="blind">이벤트1 페이지 열기</span></button></h3>
+            <div id="acdnPanel1" class="acdnPanel" aria-labelledby="acdnHeader1" role="region">
+                <div class="event_txt">
+                    <h3 class="event_tit">발렌타인데이</h3>
+                    <p>이벤트 기간 : 21.2.2(화) ~ 2.16(화)</p>
+                    <a href="">자세히 보기</a>
+                </div>
+            </div>
+            <h3><button type="button" id="acdnHeader2" class="acdnHeader" aria-controls="acdnPanel2"><span class="blind">이벤트2 페이지 열기</span></button></h3>
+            <div id="acdnPanel2" class="acdnPanel" aria-labelledby="acdnHeader2" role="region">
+                <div class="event_txt">
+                    <h3 class="event_tit">집콕챌린지</h3>
+                    <p>이벤트 기간 : 21.1.4(금) ~ 1.31(일)</p>
+                    <a href="">자세히 보기</a>
+                </div>
+            </div>
+            <h3><button type="button" id="acdnHeader3" class="acdnHeader" aria-controls="acdnPanel3"><span class="blind">이벤트3 페이지 열기</span></button></h3>
+            <div id="acdnPanel3" class="acdnPanel" aria-labelledby="acdnHeader3" role="region">
+                <div class="event_txt">
+                    <h3 class="event_tit">크리스마스 이벤트</h3>
+                    <p>이벤트 기간 : 20.12.15(화) ~ 12/25(금)</p>
+                    <a href="">자세히 보기</a>
+                </div>
+            </div>
+            <h3><button type="button" id="acdnHeader4" class="acdnHeader" aria-controls="acdnPanel4"><span class="blind">이벤트4 페이지 열기</span></button></h3>
+            <div id="acdnPanel4" class="acdnPanel" aria-labelledby="acdnHeader4" role="region">
+                <div class="event_txt">
+                    <h3 class="event_tit">Hear ME, Kodak</h3>
+                    <p>이벤트 기간 : 20.9.9(수) ~ 9.17(목)</p>
+                    <a href="">자세히 보기</a>
+                </div>
+            </div>
+            <h3><button type="button" id="acdnHeader5" class="acdnHeader" aria-controls="acdnPanel5"><span class="blind">이벤트5 페이지 열기</span></button></h3>
+            <div id="acdnPanel5" class="acdnPanel" aria-labelledby="acdnHeader5" role="region">
+                <div class="event_txt">
+                    <h3 class="event_tit">코닥 레트로 매트</h3>
+                    <p>이벤트 기간 : 20.9.3(목) ~ 9.18(금)</p>
+                    <a href="">자세히 보기</a>
+                </div>
+            </div>
+            <h3><button type="button" id="acdnHeader6" class="acdnHeader" aria-controls="acdnPanel6"><span class="blind">이벤트6 페이지 열기</span></button></h3>
+            <div id="acdnPanel6" class="acdnPanel" aria-labelledby="acdnHeader6" role="region">
+                <div class="event_txt">
+                    <h3 class="event_tit">신규회원 프로모션</h3>
+                    <p>이벤트 기간 : 20.9.1(화) ~ 9/30(수)</p>
+                    <a href="">자세히 보기</a>
+                </div>
+            </div>
+        </div>
     </section>
     <footer id="footer" class="clearfix">
         <ul class="foot_link">
