@@ -20,10 +20,17 @@ $(document).ready(function(){
     });
 
     $pcGnb.on('mouseleave', function () {
-        $(this).children().removeClass('on').children('ul').hide(function() {
-            $('#pGnb').removeClass('active');
-        });
+        $(this).children().removeClass('on').children('ul').hide();
+        $('#pGnb').removeClass('active');
     });
+
+    $pcGnb.find('a').first().on('keydown', function(e){
+        if (e.shiftKey && e.keyCode === 9) $pcGnb.trigger('mouseleave');
+    });
+    $pcGnb.find('a').last().on('keydown', function(e) {
+        if (!e.shiftKey && e.keyCode === 9) $pcGnb.children().trigger('mouseleave');
+    });
+
     //mobile 네비게이션
     const $mGnb = $('#mGnb');
     const $mGnbOpen = $('#mHeader .gnb_open_btn');
@@ -42,7 +49,7 @@ $(document).ready(function(){
         const $dep2LiHei = $(this).children('ul').find('li').outerHeight(true);
         const $dep3Licount = $(this).children('ul').find('li').length;
         //console.log($dep2LiHei * $dep3Licount);
-        
+
         if ($(this).hasClass('on')) {
             $(this).removeClass('on').children('ul').animate({maxHeight: 0}, function(){
                 $(this).css('visibility','hidden');
@@ -57,6 +64,27 @@ $(document).ready(function(){
         return false;
     });
 
+    $mGnbOpen.on('keydown',function(e){
+        if (!e.shiftKey && e.keyCode === 9) {
+            e.preventDefault();
+            $mGnb.next().find('.search_open').focus();
+        }
+    });
+    $mGnbOpen.on('keydown',function(e){
+        if (e.shiftKey && e.keyCode === 9) {
+            e.preventDefault();
+            $last.focus();
+        }
+    });
+    $mGnb.find('.last').on('keydown', function(e) {
+        if (($(this).next().css('maxHeight') === '0px') && (!e.shiftKey && e.keyCode === 9)) {
+            e.preventDefault();
+            $mGnbOpen.focus();
+        } else if (($(this).hasClass('dep2_last')) && (!e.shiftKey && e.keyCode === 9)){
+            e.preventDefault();
+            $mGnbOpen.focus();
+        }
+    });
     // pc 검색
     const $pcSearchWrap = $('#pcHeader .util .search_wrap');
     const pcSearchHei = $pcSearchWrap.outerHeight();
@@ -74,6 +102,13 @@ $(document).ready(function(){
     $pcSearchWrap.find('.search_close').on('click', function () {
         $pcSearchWrap.prev().trigger('click');
         return false;
+    })
+
+    $pcSearchWrap.find('.search_close').on('keydown', function(e){
+        if (!e.shiftKey && e.keyCode === 9) {
+            e.preventDefault();
+            $pcSearchWrap.find('.top input').focus();
+        }
     })
 
     // mobile 검색
@@ -95,5 +130,11 @@ $(document).ready(function(){
  */
         });
     });
+    $mSearchWrap.find('.search_close').on('keydown', function(e){
+        if (!e.shiftKey && e.keyCode === 9) {
+            e.preventDefault();
+            $mSearchWrap.find('.top input').focus();
+        }
+    })
     
 });
