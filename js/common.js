@@ -34,17 +34,34 @@ $(document).ready(function(){
     //mobile 네비게이션
     const $mGnb = $('#mGnb');
     const $mGnbOpen = $('#mHeader .gnb_open_btn');
+    // $(window).on('keydown',function(e){
+    //     console.log(e.keyCode);
+    // })
 
     $mGnbOpen.on('click', function () {
+        // 네비오픈버튼이 닫기 버튼인 상태에서 오픈 버튼 상태로 갈때
         if ($(this).hasClass('active')) {
             $(this).removeClass('active');
             $mGnb.stop().animate({left: '-100%'});
-        }
+/*             $(this).on('keydown',function(e){
+                if ( !e.shiftkey && e.keyCode === 9) {
+                $(this).siblings('.util').find('.search_open').focus();
+                }
+            });
+ */        }
+        // 네비오픈버튼이 오픈 버튼이 닫기 버튼으로 바뀔때
         else {
             $mGnb.stop().animate({left: 0});
             $(this).addClass('active');
-            }
+            $(this).on('keydown',function(e){
+                // 다시 네비오픈버튼에 포커스 가게하기
+               if (e.keyCode === 13) {
+                    $(this).focus();
+               }
+            });
+        }
     });
+
     $mGnb.find('> ul > li').on('click', function () {
         const $dep2LiHei = $(this).children('ul').find('li').outerHeight(true);
         const $dep3Licount = $(this).children('ul').find('li').length;
@@ -63,19 +80,11 @@ $(document).ready(function(){
         }
         return false;
     });
-
-    $mGnbOpen.on('keydown',function(e){
-        if (!e.shiftKey && e.keyCode === 9) {
-            e.preventDefault();
-            $mGnb.next().find('.search_open').focus();
+/*     $mGnbOpen.on('keydown',function(e){
         }
     });
-    $mGnbOpen.on('keydown',function(e){
-        if (e.shiftKey && e.keyCode === 9) {
-            e.preventDefault();
-            $last.focus();
-        }
-    });
+ */
+    // 모바일 네비에서 마지막 a태그에서 처음(네비오픈버튼)으로 돌아가게 하기
     $mGnb.find('.last').on('keydown', function(e) {
         if (($(this).next().css('maxHeight') === '0px') && (!e.shiftKey && e.keyCode === 9)) {
             e.preventDefault();
@@ -85,6 +94,8 @@ $(document).ready(function(){
             $mGnbOpen.focus();
         }
     });
+    
+ 
     // pc 검색
     const $pcSearchWrap = $('#pcHeader .util .search_wrap');
     const pcSearchHei = $pcSearchWrap.outerHeight();
@@ -115,26 +126,18 @@ $(document).ready(function(){
     const $mSearchWrap = $('#mHeader .util .search_wrap');
     
     $('#mHeader .util .search_open').on('click', function() {
-/*         const bodyHei = $('body').outerHeight();
-        $('html').css({height: bodyHei, overflow: 'hidden'});
-
-        $(this).append('<div id="dim"></dim>');
- */        $mSearchWrap.stop().animate({left: 0});
-    });
-
-    $mSearchWrap.find('search_close').on('click',function(){
-        $(this).preventDefault();
-        $mSearchWrap.stop().fadeOut(function() {
-/*             $('html').removeAttr();
-            $('#dim').remove();
- */
+        $mSearchWrap.stop().animate({left: 0});
+        $mSearchWrap.find('.search_close').on('keydown', function(e){
+            if (!e.shiftKey && e.keyCode === 9) {
+                e.preventDefault();
+                $mSearchWrap.find('.top input').focus();
+            }
+        })
         });
+
+     $mSearchWrap.find('.search_close').on('click',function(){
+        $mSearchWrap.stop().animate({left: '100%'});
+        $(this).parent().next().focus();
     });
-    $mSearchWrap.find('.search_close').on('keydown', function(e){
-        if (!e.shiftKey && e.keyCode === 9) {
-            e.preventDefault();
-            $mSearchWrap.find('.top input').focus();
-        }
-    })
     
 });

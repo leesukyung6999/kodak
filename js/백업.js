@@ -100,96 +100,46 @@ $(document).ready(function() {
 
     // 4-1) cnt5 이벤트 페이지 - pc 버전
     const $eventLi = $('#cnt5 .event_pc li');
-        
-    $eventLi.eq(1).find('.event_txt').show();
+    
     $eventLi.find('.event_img').on('click', function () {
-        $(this).parent().addClass('on').siblings().removeClass('on');
 /*         // 초기화
         $(this).parent().siblings().removeClass('on').find('.event_txt').stop().slideUp('fast');
         // 클릭하면
         $(this).parent().addClass('on').find('.event_txt').delay(500).slideDown();
  */    
+        $(this).parent().addClass('on').siblings().removeClass('on');
     });
+
 
     // 4-1) cnt5 이벤트 - mobile버전 (아코디언)
     const $acco = $('.accordion');
+    const $accoPanel = $acco.find('li .acdnPanel');
+    $acco.children().attr({tabIndex: 0});
 
-    //1) 로딩시 초기 설정
-    //접근성을 위한 의미적 제어 : 나자신 버튼에게는 aria-expanded: true / aria-disabled: true, 나머지 버튼은 aria-expanded: false
-    $acco.find('.tit .acdnHeader').attr({'aria-expanded': false});
-
-    //2) 아코디언헤더(버튼)을 누르는 동안 keydown = 키보드 제어
-    //방향키 : 상단38, 하단40, 홈36, end35, (enter13와 space bar32)
-    $acco.find('.acdnHeader').on('keydown', function (e) {
-      const key = e.keyCode;
-      console.log(key);
-      switch (key) {
-        case 38: //상단 방향키
-          if ($(this).hasClass('first')) $(this).closest('.accordion').find('.tit .last').focus();
-          else $(this).parent().prev().prev().children().focus();
-          break;
-        case 40: //하단 방향키
-          if ($(this).hasClass('last')) $(this).closest('.accordion').find('.tit .first').focus();
-          else $(this).parent().next().next().children().focus();
-          break;
-        case 36:    //home키
-          e.preventDefault();
-          $(this).closest('.accordion').find('.tit .first').focus();
-          break;
-        case 35:    //end키
-          e.preventDefault();
-          $(this).closest('.accordion').find('.tit .last').focus();
-          break;
+    $acco.children().on('click focus', function () {
+        if ($(this).hasClass('on')) {
+            $(this).removeClass('on').find('.acdnHeader').show().next().stop().animate({maxHeight: 0},1000, function(){
+               $(this).css('visibility','hidden');
+            });
         }
-      });
+        else {
+            $(this).addClass('on').siblings().removeClass('on').find('.acdnPanel').stop().animate({maxHeight: 0}, 1000,function(){
+                $(this).css('visibility','hidden').prev().show();
+             });
+            $(this).find('.acdnPanel').css('visibility','visible').stop().animate({maxHeight: 800}, 1000,function(){
+                $(this).prev().hide();
+            });
+        }
+    });	//mouseenter, focusin이벤트 종료
 
-    //3) 아코디언헤더(버튼)을 click =마우스 제어 : 열려진 패널은 다시 닫기지 않는다 => 닫긴 패널만 제어
-    $acco.find('.acdnHeader').on('click', function () {
-      //if ( display == 'none' ) { //현재 닫겨진 경우
-      if ( !$(this).parents('.event_accodion').hasClass('on') ) { //현재 닫겨진 경우
-        //아코디언헤더(버튼) : 나자신의 aria추가 => 부모에 .on추가 => 나머지 .tit형제들 .on 제거 => 그 하위 자식의 aria-expanded: false / aria-disabled 삭제
-        $(this).attr({'aria-expanded': true, 'aria-disabled': false}).parents('.event_accodion').addClass('on').siblings('.event_accodion.on').removeClass('on').find('.acdnHeader').attr({'aria-expanded': false}).removeAttr('aria-disabled');
-
-        //아코디언패널 : 나자신 바로뒤 패널은 열리고 나머지 패널은 닫기기 => tabIndex 제어
-        $(this).parent().next().css('visibility','visible').stop().animate({maxHeight: 400}).attr('tabIndex', 0).parents('.event_accodion').siblings().find('.acdnPanel').stop().animate({maxHeight: 0},function(){
-            $(this).css('visibility','hidden');
-        }).attr('tabIndex', -1);
-      }
-      else { //현재 열려진 경우 : 나자신을 초기화
-        $(this).attr('aria-expanded', false).removeAttr('aria-disabled').parent().next().stop().animate({maxHeight: 0},function(){
-            $(this).css('visibility','hidden');
-        }).parents('.event_accodion').removeClass('on').attr('tabIndex', -1);
-      }
+    $acco.find('.list1, .list6').on('keydown', function (e) {
+      if ($acco.hasClass('pc')) {
+        if ($(this).hasClass('list1') && (e.shiftKey && e.keyCode === 9)) out('pc');
+        else if ($(this).hasClass('list6') && (!e.shiftKey && e.keyCode === 9)) out('pc');
+      } else if ($acco.hasClass('m')) {
+        if ($(this).hasClass('list1') && (e.shiftKey && e.keyCode === 9)) out('m');
+        else if ($(this).hasClass('list6') && (!e.shiftKey && e.keyCode === 9)) out('m');
+       }
     });
-
-    // const $acco = $('.accordion');
-    // const $accoPanel = $acco.find('.acdnPanel');
-    // $acco.children().attr({tabIndex: 0});
-
-    // $acco.children().on('click focus', function () {
-    //     if ($(this).hasClass('on')) {
-    //         $(this).removeClass('on').find('.acdnHeader').show().next().stop().animate({maxHeight: 0},1000, function(){
-    //            $(this).css('visibility','hidden');
-    //         });
-    //     }
-    //     else {
-    //         $(this).addClass('on').siblings().removeClass('on').find('.acdnPanel').stop().animate({maxHeight: 0}, 1000,function(){
-    //             $(this).css('visibility','hidden').prev().show();
-    //          });
-    //         $(this).find('.acdnPanel').css('visibility','visible').stop().animate({maxHeight: 800}, 1000,function(){
-    //             $(this).prev().hide();
-    //         });
-    //     }
-    // });	//mouseenter, focusin이벤트 종료
-
-    // $acco.find('.list1, .list6').on('keydown', function (e) {
-    //   if ($acco.hasClass('pc')) {
-    //     if ($(this).hasClass('list1') && (e.shiftKey && e.keyCode === 9)) out('pc');
-    //     else if ($(this).hasClass('list6') && (!e.shiftKey && e.keyCode === 9)) out('pc');
-    //   } else if ($acco.hasClass('m')) {
-    //     if ($(this).hasClass('list1') && (e.shiftKey && e.keyCode === 9)) out('m');
-    //     else if ($(this).hasClass('list6') && (!e.shiftKey && e.keyCode === 9)) out('m');
-    //    }
-    // });
       
 });

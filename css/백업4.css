@@ -367,8 +367,7 @@
     left: 150px; } }
 #cnt5 {
   background: #faf2e7;
-  box-sizing: border-box;
-  /* visibility: hidden;max-height: 0;overflow: hidden; */ }
+  box-sizing: border-box; }
   #cnt5 h2 {
     font-size: 50px;
     font-weight: 700;
@@ -393,7 +392,7 @@
         position: relative;
         z-index: 10;
         width: 8.3333333333vw;
-        height: 467px;
+        height: 466px;
         background: no-repeat;
         cursor: pointer; }
     #cnt5 .event_pc li:nth-child(1) .event_img {
@@ -416,13 +415,14 @@
       background-position: 17% 0; }
     #cnt5 .event_pc .event_txt {
       position: absolute;
-      bottom: 0;
       left: 0;
+      bottom: 0;
       background: #fff;
       width: 25.8333333333vw;
       height: 105px;
       padding: 10px 5px 25px 25px;
-      opacity: 0; }
+      opacity: 0;
+      /* display: none;top: 100%; */ }
       #cnt5 .event_pc .event_txt h3 {
         font-size: 30px;
         font-weight: 700;
@@ -437,7 +437,7 @@
         right: 25px;
         top: 15px;
         padding: 5px 30px 5px 10px;
-        background: url("../images/pc/btn_more.png") no-repeat 95% 55%;
+        background: url("../images/pc/btn_more.png") no-repeat 94% 50%;
         border: 1px solid #222;
         border-radius: 10px; }
       #cnt5 .event_pc .event_txt a:hover, #cnt5 .event_pc .event_txt a:focus {
@@ -454,6 +454,9 @@
       bottom: -100px;
       opacity: 1; }
   #cnt5 .accordion {
+    visibility: hidden;
+    max-height: 0;
+    overflow: hidden;
     display: none; }
 
 @media screen and (max-width: 1440px) {
@@ -631,28 +634,6 @@
     #cnt5 .event_pc li .event_img {
       width: 8.6264656616vw;
       height: 25.1256281407vw; }
-    #cnt5 .event_pc li .event_txt {
-      width: 26.6331658291vw;
-      height: 8.3752093802vw;
-      padding: 2.0938023451vw 0.418760469vw 2.0938023451vw 2.0938023451vw; }
-      #cnt5 .event_pc li .event_txt h3 {
-        font-size: 1.1725293132vw;
-        line-height: 2.0938023451vw;
-        margin-bottom: 0.837520938vw; }
-      #cnt5 .event_pc li .event_txt p {
-        font-size: 1.3400335008vw;
-        line-height: 2.0938023451vw; }
-      #cnt5 .event_pc li .event_txt a {
-        font-size: 1.1725293132vw;
-        right: 1.256281407vw;
-        top: 1.256281407vw;
-        padding: 0.1675041876vw 0.837520938vw 0.1675041876vw 0.3350083752vw;
-        background: none; }
-      #cnt5 .event_pc li .event_txt a:hover, #cnt5 .event_pc li .event_txt a:focus {
-        border-color: #FFB300;
-        color: #FFB300; }
-      #cnt5 .event_pc li .event_txt .dn {
-        display: none; }
   #cnt5 .event_pc li:nth-child(1) .event_img {
     background-image: url("../images/tablet/event1.jpg");
     background-position: 50% 41%; }
@@ -671,10 +652,34 @@
   #cnt5 .event_pc li:nth-child(6) .event_img {
     background-image: url("../images/tablet/event6.jpg");
     background-position: 11% 56%; }
+  #cnt5 .event_pc .event_txt {
+    bottom: -8.3752093802vw;
+    width: 26.6331658291vw;
+    height: 8.3752093802vw;
+    padding: 2.0938023451vw 0.418760469vw 2.0938023451vw 2.0938023451vw;
+    visibility: hidden; }
+    #cnt5 .event_pc .event_txt h3 {
+      font-size: 1.1725293132vw;
+      line-height: 2.0938023451vw;
+      margin-bottom: 0.837520938vw; }
+    #cnt5 .event_pc .event_txt p {
+      font-size: 1.3400335008vw;
+      line-height: 2.0938023451vw; }
+    #cnt5 .event_pc .event_txt a {
+      font-size: 1.1725293132vw;
+      right: 1.256281407vw;
+      top: 1.256281407vw;
+      padding: 0.1675041876vw 0.837520938vw 0.1675041876vw 0.3350083752vw;
+      background: none; }
+    #cnt5 .event_pc .event_txt a:hover, #cnt5 .event_pc .event_txt a:focus {
+      border-color: #FFB300;
+      color: #FFB300; }
+    #cnt5 .event_pc .event_txt .dn {
+      display: none; }
   #cnt5 .event_pc li.on .event_img {
     width: 26.6331658291vw; }
   #cnt5 .event_pc li.on .event_txt {
-    bottom: -8.3752093802vw; } }
+    visibility: visible; } }
 @media screen and (max-width: 767px) {
   #cnt1 {
     -webkit-flex-wrap: wrap;
@@ -714,7 +719,7 @@
         width: 61.3333333333vw;
         height: 26.6666666667vw;
         padding: 0 10.6666666667vw 0 5.3333333333vw;
-        font-size: 1.6vw;
+        font-size: 1calc-vw375 6;
         left: 2.6666666667vw; }
         #cnt1 .first_box .circle .red {
           font-size: 5.3333333333vw; }
@@ -799,18 +804,6 @@
           margin: 13.3333333333vw 0; }
         #cnt3 .motion .vanish * {
           padding-right: 2.6666666667vw; }
-      #cnt3 .motion .vanish.on::before {
-        -webkit-animation: moveLitRight 1s ease-in-out 1 forwards;
-        -moz-animation: moveLitRight 1s ease-in-out 1 forwards;
-        animation: moveLitRight 1s ease-in-out 1 forwards; }
-  @-webkit-keyframes moveLitRight {}
-  @-moz-keyframes moveLitRight {}
-      #cnt3 .motion .vanish.on::after {
-        -webkit-animation: blink 0.5s ease-in-out 3 forwards;
-        -moz-animation: blink 0.5s ease-in-out 3 forwards;
-        animation: blink 0.5s ease-in-out 3 forwards; }
-  @-webkit-keyframes blink {}
-  @-moz-keyframes blink {}
       #cnt3 .motion .print {
         width: 80vw;
         height: 69.3333333333vw; }
@@ -887,83 +880,76 @@
     font-size: 8vw; }
   #cnt5 p {
     font-size: 4.2666666667vw;
-    line-height: 6.6666666667vw;
-    margin-bottom: 4vw; }
+    line-height: 6.6666666667vw; }
     #cnt5 p .dp_change {
       display: block; }
   #cnt5 .event_pc {
     display: none; }
   #cnt5 .accordion {
     visibility: visible;
+    overflow: visible;
+    max-height: 2666.6666666667vw;
     display: block; }
-    #cnt5 .accordion .event_accodion {
-      position: relative;
-      max-height: 1000px;
-      margin-bottom: 2.6666666667vw;
+    #cnt5 .accordion li {
+      margin-bottom: 2.6666666667vw; }
+    #cnt5 .accordion li .acdnHeader {
+      background: no-repeat;
       width: 79.7333333333vw;
       height: 26.6666666667vw; }
-      #cnt5 .accordion .event_accodion .acdnHeader {
-        -webkit-transition: all 0.5s;
-        transition: all 0.5s;
-        background: no-repeat;
+    #cnt5 .accordion li:nth-child(1) .acdnHeader {
+      background-image: url("../images/mobile/event1.jpg");
+      background-position: 0% 34%; }
+    #cnt5 .accordion li:nth-child(2) .acdnHeader {
+      background-image: url("../images/mobile/event2.jpg");
+      background-position: 0% 37%; }
+    #cnt5 .accordion li:nth-child(3) .acdnHeader {
+      background-image: url("../images/mobile/event3.jpg");
+      background-position: 0% 17%; }
+    #cnt5 .accordion li:nth-child(4) .acdnHeader {
+      background-image: url("../images/mobile/event4.jpg");
+      background-position: 0% 51%; }
+    #cnt5 .accordion li:nth-child(5) .acdnHeader {
+      background-image: url("../images/mobile/event5.jpg");
+      background-position: 60% 0%; }
+    #cnt5 .accordion li:nth-child(6) .acdnHeader {
+      background-image: url("../images/mobile/event6.jpg");
+      background-position: 0% 47%; }
+    #cnt5 .accordion li .acdnPanel {
+      position: relative;
+      max-height: 0;
+      overflow: hidden;
+      visibility: hidden; }
+      #cnt5 .accordion li .acdnPanel img {
+        width: 79.7333333333vw; }
+      #cnt5 .accordion li .acdnPanel .event_txt {
+        font-size: 3.2vw;
+        line-height: 9.3333333333vw;
         position: absolute;
         left: 0;
-        top: 0;
+        bottom: 0;
         width: 79.7333333333vw;
-        height: 26.6666666667vw; }
-      #cnt5 .accordion .event_accodion:nth-child(1) .acdnHeader {
-        background-image: url("../images/mobile/event1.jpg");
-        background-position: 0% 34%; }
-      #cnt5 .accordion .event_accodion:nth-child(2) .acdnHeader {
-        background-image: url("../images/mobile/event2.jpg");
-        background-position: 0% 37%; }
-      #cnt5 .accordion .event_accodion:nth-child(3) .acdnHeader {
-        background-image: url("../images/mobile/event3.jpg");
-        background-position: 0% 17%; }
-      #cnt5 .accordion .event_accodion:nth-child(4) .acdnHeader {
-        background-image: url("../images/mobile/event4.jpg");
-        background-position: 0% 51%; }
-      #cnt5 .accordion .event_accodion:nth-child(5) .acdnHeader {
-        background-image: url("../images/mobile/event5.jpg");
-        background-position: 60% 0%; }
-      #cnt5 .accordion .event_accodion:nth-child(6) .acdnHeader {
-        background-image: url("../images/mobile/event6.jpg");
-        background-position: 0% 47%; }
-      #cnt5 .accordion .event_accodion.on .acdnHeader + .acdnPanel {
-        max-height: 98.4vw; }
-      #cnt5 .accordion .event_accodion .acdnPanel {
-        position: absolute;
-        max-height: 0;
-        overflow: hidden;
-        visibility: hidden;
-        top: 0;
-        left: 0;
-        width: 79.7333333333vw;
-        height: 98.4vw; }
-        #cnt5 .accordion .event_accodion .acdnPanel .event_txt {
-          font-size: 3.2vw;
-          line-height: 9.3333333333vw;
+        height: 22.1333333333vw;
+        padding: 2.1333333333vw 2.6666666667vw;
+        background: #fff; }
+        #cnt5 .accordion li .acdnPanel .event_txt h3 {
+          font-size: 4.8vw; }
+        #cnt5 .accordion li .acdnPanel .event_txt a {
+          background: url("../images/mobile/cnt5_m_btn_more.png") no-repeat 97% 45%;
           position: absolute;
-          left: 0;
-          bottom: 0;
-          width: 79.7333333333vw;
-          height: 22.1333333333vw;
-          padding: 2.1333333333vw 2.6666666667vw;
-          background: #fff; }
-          #cnt5 .accordion .event_accodion .acdnPanel .event_txt h3 {
-            font-size: 4.8vw; }
-          #cnt5 .accordion .event_accodion .acdnPanel .event_txt a {
-            background: url("../images/mobile/cnt5_m_btn_more.png") no-repeat 97% 45%;
-            position: absolute;
-            right: 6.6666666667vw;
-            top: 3.2vw;
-            padding: 1.0666666667vw 3.2vw 0.8vw 0.5333333333vw;
-            border-radius: 1.3333333333vw;
-            border-bottom: 0.2666666667vw solid #222;
-            line-height: 4.2666666667vw; }
-          #cnt5 .accordion .event_accodion .acdnPanel .event_txt a:hover, #cnt5 .accordion .event_accodion .acdnPanel .event_txt a:focus {
-            background-image: url("../images/mobile/cnt5_m_btn_moreMon.png");
-            border-color: #FFB300;
-            color: #FFB300; } }
+          right: 6.6666666667vw;
+          top: 3.2vw;
+          padding: 1.0666666667vw 3.2vw 0.8vw 0.5333333333vw;
+          border-radius: 1.3333333333vw;
+          border-bottom: 0.2666666667vw solid #222;
+          line-height: 4.2666666667vw; }
+        #cnt5 .accordion li .acdnPanel .event_txt a:hover, #cnt5 .accordion li .acdnPanel .event_txt a:focus {
+          background-image: url("../images/mobile/cnt5_m_btn_moreMon.png");
+          border-color: #FFB300;
+          color: #FFB300; }
+    #cnt5 .accordion li.on .acdnHeader {
+      display: none; }
+    #cnt5 .accordion li.on .acdnPanel {
+      visibility: visible;
+      max-height: 133.3333333333vw; } }
 
-/*# sourceMappingURL=main.css.map */
+/*# sourceMappingURL=%EB%B0%B1%EC%97%854.css.map */
