@@ -3,8 +3,20 @@ $(document).ready(function(){
     const $pcHeader = $('#pcHeader');
 
     $(window).on('scroll', function () {
-        if ($(this).scrollTop() > 10) $pcHeader.addClass('on');
+        const scrollY = $(this).scrollTop();
+        if ( scrollY > 10) $pcHeader.addClass('on');
         else $pcHeader.removeClass('on');
+
+        // top 버튼
+        const $btnTop =$('.btn_top');
+        $btnTop.on('click',function(){
+            $('html,body').stop().animate({scrollTop: 0});
+        });
+        const cnt5 = $('#cnt5').offset().top;
+        //console.log(scrollY,cnt5);
+        if (scrollY > cnt5) $btnTop.addClass('on');
+        else $btnTop.removeClass('on');
+
     });
 
     // pc 네비게이션
@@ -127,17 +139,41 @@ $(document).ready(function(){
     
     $('#mHeader .util .search_open').on('click', function() {
         $mSearchWrap.stop().animate({left: 0});
+        // 모달 만들기
+        /* 
+        1) 창 크기 고정
+        2) 모달을 제외한 나머지 aria-hidden, inert
+        3) #dim 생성
+        */
+        const wrapHei = $('#wrap').outerHeight();
+        $('html, body').css({height: wrapHei,overflow: 'hidden'});
+        $(this).parent().siblings().attr({'aria-hidden': true,inert: ''}).parent().siblings().attr({'aria-hidden': true,inert: ''});
+        $mSearchWrap.parent().before('<div id="dim"></dim>');
         $mSearchWrap.find('.search_close').on('keydown', function(e){
             if (!e.shiftKey && e.keyCode === 9) {
                 e.preventDefault();
                 $mSearchWrap.find('.top input').focus();
             }
-        })
         });
+
+        $('#dim').on('click',function(){
+            $mSearchWrap.find('.search_close').click();
+        });
+
+        $(window).on('keydown',function(e){
+            if (e.keyCode === 27) $mSearchWrap.find('.search_close').click();
+
+        });
+    });
 
      $mSearchWrap.find('.search_close').on('click',function(){
         $mSearchWrap.stop().animate({left: '100%'});
         $(this).parent().next().focus();
+        // 모달 제거
+        $('#dim').remove();
+        $mSearchWrap.parent().siblings().removeAttr('aria-hidden inert').parent().siblings().removeAttr('aria-hidden inert');
+        $('html, body').removeAttr('style');
     });
+
     
 });

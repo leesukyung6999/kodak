@@ -538,8 +538,8 @@
   #cnt5 .event_pc li {
     margin-right: 20px; }
     #cnt5 .event_pc li .event_img {
-      width: 8.6264656616vw;
-      height: 25.1256281407vw; }
+      width: calc-vw1194(103);
+      height: calc-vw1194(300); }
   #cnt5 .event_pc li:nth-child(1) .event_img {
     background-image: url("../images/tablet/event1.jpg");
     background-position: 50% 0; }
@@ -559,8 +559,8 @@
     background-image: url("../images/tablet/event6.jpg");
     background-position: 79% 0; }
   #cnt5 .event_pc .event_txt {
-    width: 26.6331658291vw;
-    height: 8.3752093802vw;
+    width: calc-vw1194(318);
+    height: calc-vw1194(100);
     padding: 10px 5px 25px 25px;
     visibility: hidden; }
     #cnt5 .event_pc .event_txt h3 {
@@ -575,7 +575,7 @@
       border-color: #FFB300;
       color: #FFB300; }
   #cnt5 .event_pc li.on .event_img {
-    width: 26.6331658291vw; } }
+    width: calc-vw1194(318); } }
 @media screen and (max-width: 767px) {
   #cnt1 {
     -webkit-flex-wrap: wrap;

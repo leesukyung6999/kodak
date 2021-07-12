@@ -1,7 +1,6 @@
 $(document).ready(function() {
-    
-     $(window).on('scroll', function () {
-        // 0) fade 효과
+    // 글씨 fade 효과
+    $(window).on('scroll', function () {
         let scrollY = $(this).scrollTop() + $(this).height() * 3/4; 
     
         $('.fade').each(function (idx) {
@@ -11,30 +10,39 @@ $(document).ready(function() {
             $(this).removeClass('on');
           }
         });
+      });
+      
+      $(window).trigger('scroll');
+    
+     $(window).on('scroll', function () {
         // 1) cnt2 카메라 움직임
-        const $cnt2 = $('#cnt2').offset().top;
+        const moveStart = $('#cnt2').offset().top;
+        const moveScale = moveStart * 0.4;
 
-        if ( scrollY > $cnt2){
+        if ($(this).scrollTop() > moveStart - moveScale && $(this).scrollTop() < moveStart + moveScale){
             $('#cnt2 ul li a').parent().addClass('on');
         } else $('#cnt2 ul li a').parent().removeClass('on');
 
         // 3-1) cnt4 scroller 누르고 있을땐 point_right 사라지게 ok but 왼쪽방향으로 움직일때 제어하기!!!!!!!!!!!!!
     
         // 3-2) 4pass 사진들 delay되면서 나오기
-        scrollY = $(this).scrollTop() + $(this).height() * 1/3;         
         const $cnt4 = $('#cnt4').offset().top;
+        const $cnt5 = $('#cnt5').offset().top;
         const $passDelay = $('#cnt4 #pass_delaySlide .pass');
-        if (scrollY > $cnt4 ) {
+        if ($(this).scrollTop() > $cnt4 - 250 && $(this).scrollTop() < $cnt5 + 250 ) {
             $passDelay.each(function(i) {
-              let topMove = 50 * i + 50;
-                $(this).delay(200 * i + 200).animate({top: `${topMove}px`}).addClass('on');
+                let TopMove = 50 * i +50;
+                //console.log(TopMove);
+                $(this).delay(100 * i + 100).stop(false,true).animate({top: `${TopMove}px`});
             });
         }
         else {
-          $passDelay.css({'top': 0}).removeClass('on');
+            $passDelay.each(function(i) {
+                $(this).delay(100 * i).stop().animate({top: 0});
+            });
           }
     });
-    $(window).trigger('scroll');
+    
     // 2-1) cnt3 카메라 출력 움직임 - pc
     // 2-2) cnt3 카메라 출력 움직임 - mobile
     const cnt3 = $('#cnt3 .tit_txt').offset().top;
@@ -47,6 +55,8 @@ $(document).ready(function() {
         clearTimeout(timer);
 
         timer = setTimeout(function () {
+            var scrollY = $(this).scrollTop();
+
             if (window.matchMedia("(max-width: 767px)").matches) { //모바일
                 // pc 스타일이 적용 되었다면 초기화 하기 추가(pc에서 모바일로 변경되는 순간 한번만 동작)
                 if (isMobile === false) {
@@ -105,11 +115,10 @@ $(document).ready(function() {
 
     // 4-1) cnt5 이벤트 - mobile버전 (아코디언)
     const $acco = $('.accordion');
-    const $eventAcco = $acco.children();
 
-      // 1) 로딩시 초기 설정 아코디언 2번째는 열려있게, aria-expanded, aria-disabled / 나머지는 'aria-expanded'
-      $eventAcco.eq(1).addClass('on').find('.acdnHeader').attr({'aria-expanded': true,'aria-disabled': true,tabIndex: -1}).parent().next().css('visibility','visible').stop().animate({maxHeight: '400px'}).attr('tabIndex', 0);
-      $eventAcco.not('.on').find('.acdnHeader').attr({'aria-expanded': false});
+      // 1) 로딩시 초기 설정 아코디언 2번째는 열려있게
+      $('.event_accordion').eq(1).addClass('on').find('.acdnHeader').attr({'aria-expanded': false}).parent().next().css('visibility','visible').stop().animate({maxHeight: '400px'}).attr('tabIndex', 0).prev().children().attr('tabIndex', -1);
+
 
       //2) 아코디언헤더(버튼)을 누르는 동안 keydown = 키보드 제어
       //방향키 : 상단38, 하단40, 홈36, end35, (enter13와 space bar32)
@@ -119,11 +128,11 @@ $(document).ready(function() {
         switch (key) {
           case 38: //상단 방향키
             if ($(this).hasClass('first')) $(this).closest('.accordion').find('.tit .last').focus();
-            else $(this).parents('.event_accordion').prev('.acdnHeader').focus();
+            else $(this).parent().prev().prev().children().focus();
             break;
           case 40: //하단 방향키
             if ($(this).hasClass('last')) $(this).closest('.accordion').find('.tit .first').focus();
-            else $(this).parents('.event_accordion').next('.acdnHeader').focus();
+            else $(this).parent().next().next().children().focus();
             break;
           case 36:    //home키
             e.preventDefault();
@@ -136,16 +145,22 @@ $(document).ready(function() {
           }
         });
 
-      //3) 아코디언헤더(버튼)을 click =마우스 제어
+      //3) 아코디언헤더(버튼)을 click =마우스 제어 : 열려진 패널은 다시 닫기지 않는다 => 닫긴 패널만 제어
       $acco.find('.acdnHeader').on('click', function () {
-        if ( !$(this).parents('.event_accordion').hasClass('on') ) { 
-          // 현재 닫혀 있는 경우 : 열려져야 함
-          // 클릭된 헤더 + 이벤트 아코디언에 on 붙이기 / 형제들은 그 반대로
-          $(this).attr({'aria-expanded': true,'aria-disabled': true,tabIndex: -1}).parents('.event_accordion').addClass('on').siblings().removeClass('on').find('.acdnHeader').attr({'aria-expanded': false,tabIndex: 0}).removeAttr('aria-disabled');
-          // 패널
-          $(this).parent().next().css('visibility','visible').attr('tabIndex',0).stop().animate({maxHeight: 400}).closest('.event_accordion').siblings().find('.acdnPanel').attr({tabIndex: -1}).stop().animate({maxHeight: 0}, function() {
-            $(this).css('visibility','hidden');
-          });
+        if ( !$(this).parents('.event_accordion').hasClass('on') ) { //현재 닫겨진 경우 => 눌러서 열리게
+          //아코디언 감싼 div에 .on추가 => 나머지 형제들 .on 제거 =>
+          //아코디언헤더(버튼) : 나자신의 aria추가 aria-expanded: true / aria-disabled 삭제??
+          $(this).attr({'aria-expanded': true, 'aria-disabled': true}).parents('.event_accordion').addClass('on').siblings('.event_accordion.on').removeClass('on').find('.acdnPanel').stop().animate({visibility: 'hidden'},function(){
+            $(this).css({maxHeight: 0});
+          }).find('.accoHeader').attr({'aria-expanded': false}).removeAttr('aria-disabled');
+ 
+          //아코디언패널 : 나자신 바로뒤 패널은 열리고 나머지 패널은 닫기기 => tabIndex 제어
+          $(this).attr({'aria-expanded': false,tabIndex: -1}).removeAttr('aria-disabled').parent().next().css('visibility','visible').stop().animate({maxHeight: '400px'}).attr('tabIndex', 0);
+        }
+        else { //현재 열려진 경우 : 나자신을 초기화
+          $(this).attr('aria-expanded', true).removeAttr('aria-disabled').parents('.event_accordion').removeClass('on').find('.acdnPanel').stop().animate({visibility: 'hidden'},function(){
+            $(this).css({maxHeight: 0});
+          })
         }
       });
 });

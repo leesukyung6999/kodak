@@ -514,3 +514,30 @@
         }
       }
 }
+.accordion{
+    visibility: visible;display: block;
+    .event_accodion{
+        position: relative;max-height: 1000px;margin-bottom: calc-vw375(10);width: calc-vw375(299);height: calc-vw375(100);
+        .acdnHeader{
+            @include transition(all 0.5s);
+            background: no-repeat;position: absolute;left: 0;top: 0;width: calc-vw375(299);height: calc-vw375(100);
+        }
+        &:nth-child(1) .acdnHeader{background-image: url("../images/mobile/event1.jpg");background-position: 0% 34%;}
+        &:nth-child(2) .acdnHeader{background-image: url("../images/mobile/event2.jpg");background-position: 0% 37%;}
+        &:nth-child(3) .acdnHeader{background-image: url("../images/mobile/event3.jpg");background-position: 0% 17%;}
+        &:nth-child(4) .acdnHeader{background-image: url("../images/mobile/event4.jpg");background-position: 0% 51%;}
+        &:nth-child(5) .acdnHeader{background-image: url("../images/mobile/event5.jpg");background-position: 60% 0%;}
+        &:nth-child(6) .acdnHeader{background-image: url("../images/mobile/event6.jpg");background-position: 0% 47%;}
+        &.on .acdnHeader + .acdnPanel{max-height:  calc-vw375(369);}
+    
+        .acdnPanel{
+            max-height: 0;overflow: hidden;visibility: hidden;
+            .event_txt{
+                font-size: calc-vw375(12);line-height: calc-vw375(35);position: absolute;left: 0;bottom: 0;width: calc-vw375(299);height: calc-vw375(83);padding: calc-vw375(8) calc-vw375(10);background: #fff;
+                h3{font-size: calc-vw375(18);}
+                a{background: url("../images/mobile/cnt5_m_btn_more.png") no-repeat 97% 45%;position: absolute;right: calc-vw375(25);top: calc-vw375(12);padding: calc-vw375(4) calc-vw375(12) calc-vw375(3) calc-vw375(2);border-radius: calc-vw375(5);border-bottom: calc-vw375(1) solid #222;line-height: calc-vw375(16);}
+                a:hover, a:focus{background-image: url("../images/mobile/cnt5_m_btn_moreMon.png");border-color: $yellow;color: $yellow;}
+            }
+        }
+    }
+}

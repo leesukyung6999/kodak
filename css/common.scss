@@ -27,9 +27,9 @@ body *{box-sizing: border-box;}
 /* effect */
 .fade .fade_up, .fade .fade_down, .fade .fade_left, .fade .fade_right{@include transition(all 1s);opacity: 0;}
 .fade.on .fade_up, .fade.on .fade_down, .fade.on .fade_left, .fade.on .fade_right{opacity: 1;@include transform(translate(0,0));}
-.fade .fade_up{@include transform(translate(0, 100px))}
-.fade .fade_down{@include transform(translate(0, -100px))}
-.fade .fade_left {@include transform(translate(100px,0))}
-.fade .fade_right{@include transform(translate(-100px,0))}
+.fade .fade_up{@include transform(translate(0, 30px))}
+.fade .fade_down{@include transform(translate(0, -30px))}
+.fade .fade_left {@include transform(translate(30px,0))}
+.fade .fade_right{@include transform(translate(-30px,0))}
 .delay-3{transition-delay: 0.3s !important}
 .delay-6{transition-delay: 0.6s !important}
