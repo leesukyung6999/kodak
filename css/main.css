@@ -629,12 +629,12 @@
   #cnt3 .motion {
     padding-left: 0; }
     #cnt3 .motion .vanish {
-      width: 820px; }
+      width: 1000px; }
       #cnt3 .motion .vanish * {
         padding-right: 1.8518518519vw; }
     #cnt3 .motion .print .img_b {
       background-image: url("../images/tablet/cnt3_img_b1024.png");
-      right: -25%;
+      right: -30%;
       height: 340px; }
 
   #cnt4 .txt_box {
