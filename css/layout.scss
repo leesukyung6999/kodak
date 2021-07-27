@@ -166,7 +166,7 @@ body{overflow-x: hidden;}
             .line3{@include transform(rotate(-45deg));top: calc-vw1080(11);}
         }
         #mGnb{
-            position: fixed;left: -100%;top: 0;width: 100vw;height: 100%;background: $yellow;
+            position: fixed;left: -150%;top: 0;width: 100vw;height: 100%;background: $yellow;
             > ul{
                 padding: calc-vw1080(200) calc-vw1080(65);
                 >li{
@@ -217,6 +217,92 @@ body{overflow-x: hidden;}
 
 // 모바일
 @media screen and (max-width: 767px) {
+    .header{
+        .logo a{width: 70px;height: 80px;padding: 0;}       
+    }
+    #mHeader{
+        height: 80px;padding: 0 20px;
+        .gnb_open_btn{
+            width: calc-vw767(24);height: calc-vw767(16);
+            .line{
+                height: calc-vw767(2);
+            }
+            .line2{top: calc-vw767(9);}
+            .line3{top: calc-vw767(18);}
+        }
+        .gnb_open_btn.active{
+            .line1{top: calc-vw767(9);}
+            .line3{top: calc-vw767(9);}
+        }
+        #mGnb{
+            > ul{
+                padding: calc-vw767(100) calc-vw767(65);
+                >li{
+                    margin-bottom: calc-vw767(35);
+                    > a{
+                        font-size: calc-vw767(30);line-height: calc-vw767(35);padding: calc-vw767(15) calc-vw767(40) calc-vw767(15) 0;
+                        &::before, &::after{right: calc-vw767(5);top: 50%;width: calc-vw767(20);height: calc-vw767(3);}
+                    }
+                    ul {
+                        li{padding: calc-vw767(20) calc-vw767(40);font-size: calc-vw767(16);}
+                    }
+            }
+        }
+        }
+        .search_open img{width: calc-vw767(29);height: calc-vw767(37);}
+        .util{
+            .search_wrap{
+                height: 600%;background: $yellow;color: #222;
+                .top{
+                    padding: calc-vw767(100) 0;
+                    &::after{top: calc-vw767(150);height: calc-vw767(2);width: calc-vw767(300);}
+                    input{
+                        &::-webkit-input-placeholder{color: #222;font-size: calc-vw767(25);line-height: calc-vw767(25);font-weight: 700;} /* Edge */
+                        &:-ms-input-placeholder {color: #222;font-size: calc-vw767(25);line-height: calc-vw767(25);font-weight: 700;}/* Internet   Explorer 10-11 */
+                        &::placeholder {color: #222;font-size: calc-vw767(25);line-height: calc-vw767(25);font-weight: 700;}
+                    }
+                    button {
+                        img{width: calc-vw767(35);height: calc-vw767(45);line-height: calc-vw767(70);margin-left: calc-vw767(60);}
+                    }
+                }
+                .bottom {
+                    @include flex-wrap;
+                    @include justify-content;
+                    padding: 0;
+                        li{
+                            margin-right: calc-vw767(20);border-color: #222;margin-top: calc-vw767(27);border-width: calc-vw767(2);border-radius: calc-vw767(30);
+                            a{padding: calc-vw767(7) calc-vw767(13);font-size: calc-vw767(20);}
+                        }
+                }
+                .search_close{top: calc-vw767(25);width: calc-vw767(32);height: calc-vw767(32);}
+                .search_close::before, .search_close::after{background: #222;}
+            }
+        }
+    }
+    .btn_top{right: 15px;bottom: 15px;border-width: 2px;}
+
+    #footer{
+        height: auto;
+        .foot_link{
+            font-size: calc-vw767(14);line-height: calc-vw767(16);height: calc-vw767(40);margin-top: calc-vw767(75);
+            li{float: left;margin-right: calc-vw767(15);}
+            .big_font{font-size: calc-vw767(14);}
+            &::after{width: 80%;}
+        }
+        .sns{
+            position: absolute;left: 0;top: calc-vw767(30);width: calc-vw767(210);
+            li{float: left;margin-left: calc-vw767(38);width: calc-vw767(30);height: calc-vw767(30);line-height: calc-vw767(30);}
+            li:last-child{margin-left: calc-vw767(25);padding: calc-vw767(5) 0;}
+        }
+        > div{
+            float: left;font-size: calc-vw767(12);padding: calc-vw767(15) calc-vw767(120) calc-vw767(15) 0;line-height: calc-vw767(18);
+            strong{font-size: calc-vw767(16);display: block;margin-bottom: calc-vw767(10);}
+            .copy{padding-top: calc-vw767(10);}
+        }
+        .dp_change{display: block;}
+    }
+    }
+@media screen and (max-width: 375px) {
     .header{
         .logo a{width: calc-vw375(70);height: calc-vw375(80);padding: 0;}       
     }
