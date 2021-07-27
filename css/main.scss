@@ -305,7 +305,6 @@
         .event_pc li.on .event_img{width: calc-vw1440(372);}
     }
 }
-// 작은 pc 조정2
 // 태블릿   
 @media screen and (max-width: 1080px) {
     #cnt1{
@@ -383,6 +382,10 @@
             }
         }
     }
+}
+// 태블릿 추가 조정
+@media screen and (max-width: 939px) {
+    #cnt1 .since_box .dark{padding: 70px 50px 10px 400px;}
 }
 // 모바일
 @media screen and (max-width: 767px) {

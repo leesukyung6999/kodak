@@ -689,6 +689,9 @@
     width: 29.4444444444vw; }
   #cnt5 .event_pc li.on .event_txt {
     bottom: -9.2592592593vw; } }
+@media screen and (max-width: 939px) {
+  #cnt1 .since_box .dark {
+    padding: 70px 50px 10px 400px; } }
 @media screen and (max-width: 767px) {
   #cnt1 {
     -webkit-flex-wrap: wrap;
